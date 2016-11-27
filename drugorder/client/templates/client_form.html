@@ -1,0 +1,20 @@
+<!--DOCTYPE html -->
+<html>
+<body>
+<h1>Client Information Form</h1>
+<form method='post' action="{% url 'client:client_form' %}">{% csrf_token %}
+{{form.as_p}}
+<input type='submit' value='create client'/>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{% if message.tags %} {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <p>Click button to create a new client user.</p>
+</form>
+<a href="http://localhost:8000/client/make_order/">Go To Drug Order Page</a>
+</body>
+</html>

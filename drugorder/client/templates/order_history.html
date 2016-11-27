@@ -1,0 +1,30 @@
+<!--DOCTYPE html -->
+<html>
+<body>
+<h1>{{user.client_name}}'s Order History</h1>
+<p>Client Information</p>
+<p>Phone Number: {{user.phone_number}}</p>
+<p>Contact Email: {{user.contact_email}}</p>
+
+{% for order_list in nested_list %}
+<div class="row">
+    {% for order in order_list %}
+    <div class="biography_box">
+        <article class="box box-style2">
+            <h2>Drug Order</h2>
+            <p>Drug name: {{order.drug_name}}</p>
+            <p>Drug brand: {{order.drug_brand}}</p>
+            <p>quantity: {{order.quantity}}</p>
+            <p>strength: {{order.strength}}</p>
+            <p>doctor: {{order.doctor_name}}</p>
+            <p>doctor's email: {{order.doctor_email}}</p>
+            <p>comment: {{order.comment}}</p>
+        </article>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+
+
+</body>
+</html>
