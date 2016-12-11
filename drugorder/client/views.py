@@ -5,6 +5,10 @@ from .models import Client,Order
 from .forms import ClientForm,OrderForm
 from django.urls import reverse
 from django.contrib import messages
+
+def index(request):
+    return render(request,"index.html")
+
 def client_create(request):
     if request.method=='POST':
         form=ClientForm(request.POST)
