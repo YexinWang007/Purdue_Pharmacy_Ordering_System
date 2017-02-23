@@ -1,0 +1,175 @@
+/*header*/
+.header{
+  margin-top : .0%;
+  background-color: #AF8020;
+  height:80px;
+  width:100%;
+
+}
+.hello li{
+  display:inline;
+
+}
+ul.hello{
+  list-style-type: none;
+  margin-top: -1%;
+  margin-right:1%;
+  padding: 0px;
+  overflow: hidden;
+}
+ul.hello li h3{
+  list-style-type: none;
+  text-decoration:none;
+  float:right;
+  display: inline;
+  color:white;
+}
+ul.hello a{
+  list-style-type: none;
+  text-decoration:none;
+  float:right;
+  display: inline;
+  color: white;
+}
+ul.hello a:hover{
+  list-style-type: none;
+  text-decoration:none;
+  float:right;
+  display: inline;
+  color: white;
+}
+li a h3:hover:not(.active) {
+
+  color: #231F20;
+  text-decoration:none;
+
+}
+li a h3:hover{
+  list-style-type: none;
+  cursor:pointer;
+  display:inline;
+  color:black;
+}
+li a h3{
+      display: inline;
+      color: black;
+      text-align: right;
+
+      text-decoration: none;
+
+  }
+
+
+.biggerHeader{
+  height: 200px;
+  width: 100%;
+  background-color: #231F20;
+  margin-top:-2.5%;
+
+}
+.biggerHeader h1{
+  color:#AF8020;
+  text-align: center;
+  margin-top: -4%;
+  margin-left:-2%;
+}
+.biggerHeader img{
+  margin-left: 2%;
+  margin-top: 1%;
+}
+.navbar-inverse {
+       background-color: #231F20!important;
+       border-radius:0px!important;
+       border-color:#231F20!important;
+       float: right!important;
+       z-index:20;
+       margin-top:-52px;
+   }
+nav ul li a{
+  color:white!important;
+}
+nav ul li a:hover{
+  color:  #AF8020!important;
+  text-decoration:underline;
+  cursor: pointer;
+}
+nav ul li.active a{
+  background-color:  #AF8020!important;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+nav ul li.active a:hover{
+  color:  white!important;
+  cursor: pointer;
+}
+
+   /*end header*/
+   /*page content*/
+.welcome{
+  text-align: left;
+  height:auto;
+  width:70%;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  border-bottom-color: #AF8020;
+  margin-left: 15%;
+  margin-bottom:3%;
+}
+
+#panel{
+  margin-left:20%;
+  text-align: center;
+}
+
+.order-status-title p{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+table th{
+  text-align: center;
+}
+.panel-heading{
+  font-size: 25px;
+  font-weight: bold;
+
+}
+tr.viewAll:hover{
+  color:  #AF8020;
+  text-decoration:underline;
+  cursor: pointer;
+}
+   /*end page content*/
+  /*footer*/
+  .panel-footer{
+    background-color: #231F20!important;
+    clear:both;
+    position:absolute;
+    text-align: center;
+
+  }
+
+.panel table{
+  padding: 4cm,2cm
+}
+
+.panel-body p{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+.panel-footer p{
+  color: white;
+  text-decoration:none;
+}
+.panel-footer p a{
+  color: white;
+  text-decoration:none;
+}
+.panel-footer p a:hover{
+  color:  #AF8020;
+  text-decoration:underline;
+  cursor: pointer;
+}

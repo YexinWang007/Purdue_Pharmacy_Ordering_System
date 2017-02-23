@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!-- End Header -->
+<!--Page Content-->
+<div class="welcome">
+<h1>Welcome</h1>
+
+</div>
+<div id="panel">
+<div class="panel panel-default col-sm-8 col-md-8 col-lg-8">
+  <div class="panel-heading">Recent Order Status</div>
+  <div class="panel-body">
+    <p>Your Last Order Was Placed DD/MM/YYYY</p>
+  </div>
+
+  <table class="table">
+    <tr>
+        <th>Product Name</th>
+        <th>Information</th>
+        <th>Information</th>
+      </tr>
+      <tr>
+        <td>Some Product</td>
+        <td>relevent info</td>
+        <td>relevent info</td>
+      </tr>
+      <tr>
+        <td>Some Product</td>
+        <td>relevent info</td>
+        <td>relevent info</td>
+      </tr>
+      <tr class="viewAll">
+          <td>&nbsp; </td>
+        <a href=""><td>view all</td></a>
+        <td>&nbsp; </td>
+      </tr>
+  </table>
+</div>
+</div>
+<!-- footer-->
+{% endblock %}
