@@ -140,7 +140,10 @@ def product_search(request):
             if not drugList:
                 wishList = Wish_List.objects.filter(client_obj_wish=user).all()
                 messages.success(request, 'Product Not Exist')
-            else:
+            elif drugList[0].drug_name in Wish_List:
+                wishList = Wish_List.objects.filter(client_obj_wish=user).all()
+                messages.success(request, 'Product Already in The Wish List')
+            else :
                 for drug in drugList:
                     brand = drug.drug_brand
                     strength=drug.strength
