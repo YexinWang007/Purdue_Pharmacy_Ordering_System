@@ -15,9 +15,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   <!-- custom styles -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/test_order.css' %}"  media="all"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"  media="all"/>
 
-      <title>Drug Order</title>
+      <title>Recent Order</title>
     </head>
     <div class="page">
 <body>
@@ -51,8 +51,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="index.html"> Recent Order Status</a></li>
-        <li class="active"><a href="testorder.html">New Order Page</a></li>
+        <li class="active"><a href="recent_order.html"> Recent Order Status</a></li>
+        <li><a href="testorder.html">New Order Page</a></li>
         <li><a href="productSearch.html">Product Search</a></li>
         <li><a href="archive.html">Archive</a></li>
         <!--<li><a href="currentOrder.html">Current Orders</a></li>-->
@@ -82,50 +82,40 @@
 </div>
 <div id="panel">
 <div class="panel panel-default col-sm-8 col-md-8 col-lg-8">
-  <div class="panel-heading">New Order Page</div>
+  <div class="panel-heading">Recent Order Status</div>
   <div class="panel-body">
-  <p>Customer Phone Number: {{user.phone_number}}</p>
-      <p>Customer Contact Email: {{user.contact_email}}</p>
-  </div>
+    <p>You have {{orderNum}} recent orders</p>
+     <p></p>
 
-    <!--<table class="table">-->
-    <!--{{ orderform.as_table }}-->
-  <!--</table>-->
-    <form method="post" action=".">{% csrf_token %}
-         {{ drugformset.management_form }}
-         {% for drugform in drugformset %}
-          <div class="drug-formset">
-              {{ drugform.drug_name }}
-              {% if drugform.drug_name.errors %}
-                  {% for error in link_form.drug_name.errors %}
-                      {{ error|escape }}
-                  {% endfor %}
-              {% endif %}
-              {{ drugform.drug_brand }}
-              {{ drugform.strength }}
-              {{ drugform.quantity }}
-          </div>
-        {% endfor %}
+     {% for drugList,order in saveList %}
+        <div class="order-status-title">
+            <p>The order on <span style="color:darkolivegreen;font-weight:bold">{{order.date_time}}</span> is on status:  <span style="color:darkolivegreen;font-weight:bold">{{order.status}}</span></p>
+        </div>
+          <table class="table">
+            <tr>
+                <th>Product Name</th>
+                <th>Product Brand</th>
+                <th>Quantity</th>
+                <th>Strength</th>
+              </tr>
+               {% for drug in drugList %}
+              <tr>
+                <td>{{drug.drug_name}}</td>
+                <td>{{drug.drug_brand}}</td>
+                <td>{{drug.quantity}}</td>
+                  <td>{{drug.strength}}</td>
+              </tr>
+              {% endfor %}
 
-    <input type="submit" value="submit new order" />
-       {% if messages %}
-        <ul class="messages">
-        {% for message in messages %}
-        <li>{% if message.tags %} {% endif %}>{{ message }}</li>
-        {% endfor %}
-        </ul>
-      {% endif %}
-    </form>
-
-    {% block extra_js %}
-    <script src="{% static 'js/jquery.formset.js' %}"></script>
-    <script>
-        $('.drug-formset').formset({
-            addText: "add drug" ,
-            deleteText: "remove"
-        });
-    </script>
-    {% endblock %}
+              <!--<tr class="viewAll">-->
+                  <!--<td>&nbsp; </td>-->
+                <!--<a href=""><td>view all</td></a>-->
+                <!--<td>&nbsp; </td>-->
+              <!--</tr>-->
+          </table>
+          <p></p>
+    {% endfor %}
+       </div>
 </div>
 </div>
 <!-- footer-->

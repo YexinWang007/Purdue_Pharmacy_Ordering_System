@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <meta charset= "UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    {% load static %}
+        <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <!-- custom styles -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/product_search.css' %}"  media="all"/>
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+
+      <title>Search Products</title>
+    </head>
+    <div class="page">
+<body>
+  <!--header-->
+
+  <div class="header">
+  <ul class="hello">
+    <li> <a href="/logout"><h3>   &nbsp;&nbsp;&nbsp;Logout<h3></a></li>
+    <li> <h3>Hello, Mr {{user.client_name}}</h3></li>
+
+</ul>
+</div>
+</div>
+
+  <div class="biggerHeader">
+    <a href="https://engineering.purdue.edu/pharmorderingsys/home.html"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
+    <h1>Pharmacy Ordering System</h1>
+  </div>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <!--  <a class="navbar-brand" href="#">Pharmacy Ordering System</a> -->
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="recent_order.html"> Recent Order Status</a></li>
+        <li><a href="testorder.html">New Order Page</a></li>
+        <li class="active"><a href="productSearch.html">Product Search</a></li>
+        <li><a href="archive.html">Archive</a></li>
+        <!--<li><a href="currentOrder.html">Current Orders</a></li>-->
+          <li><a href="currentOrder.html">Current Orders</a></li>
+        <li><a href="frequentOrders.html">Frequent Orders</a></li>
+      <!--  <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>-->
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<!-- End Header -->
+<!--Page Content-->
+<div class="welcome">
+<h1>Search Products</h1>
+<div class="buttons">
+
+      <center>  <a href="#" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-plus-sign"></span> New Product
+      </a></center>
+      </div>
+</div>
+
+ <div class="wwform" align="center" id="wwform">
+    <form method='post' action="">{% csrf_token %}
+        <p><label for="id_wish_drug_name">Search For Product:</label>
+    <input id="id_wish_drug_name" type="text" name="wish_drug_name" maxlength="100" required /></p>
+    <!--{{wishform.as_p}}-->
+<input type='submit' id='drugs' value='Put Into Wish List'/>
+        {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+        <li>{% if message.tags %} {% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+</form>
+</div>
+
+<!--<center>-->
+<!--<div class="search">-->
+  <!--<div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-8 col-md-8 col-lg-8">-->
+  <!--<div class="input-group">-->
+          <!--&lt;!&ndash;<form method='post' action="">{% csrf_token %}&ndash;&gt;-->
+                <!--&lt;!&ndash;{{wishform.as_p}}&ndash;&gt;-->
+              <!--&lt;!&ndash;<input type="text" id='drugs' value='Put Into Wish List' class="form-control" aria-label="...">&ndash;&gt;-->
+          <!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+       <!--<input type="text" class="form-control" aria-label="...">-->
+       <!--<div class="input-group-btn">-->
+         <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search By <span class="caret"></span></button>-->
+         <!--<ul class="dropdown-menu dropdown-menu-right">-->
+           <!--<li><a href="#">Generic Name</a></li>-->
+           <!--<li><a href="#">Brand Name</a></li>-->
+           <!--<li><a href="#">CIN number</a></li>-->
+
+         <!--</ul>-->
+       <!--</div>&lt;!&ndash; /btn-group &ndash;&gt;-->
+     <!--</div>&lt;!&ndash; /input-group &ndash;&gt;-->
+   <!--</div>&lt;!&ndash; /.col-lg-6 &ndash;&gt;-->
+ <!--</div>&lt;!&ndash; /.row &ndash;&gt;-->
+<!--</center>-->
+
+
+
+
+<div id="panel">
+<div class="panel panel-default col-sm-8 col-md-8 col-lg-8">
+  <div class="panel-heading">Wish List</div>
+  <div class="panel-body">
+  </div>
+  <table class="table">
+    <tr>
+        <th>Generic Name</th>
+        <th>Brand Name</th>
+        <th>Strength</th>
+        <th>CIN Number</th>
+        <th>Price Per Unit</th>
+        <th>Delete Product</th>
+      </tr>
+      {% for drug in wishList %}
+      <div class="item">
+      <tr>
+         <td> <span class="revision" data-pk="{{drug.pk}}" data-name="wish_drug_name" data-type="text">{{drug.wish_drug_name}}</span></td>
+          <td> <span class="revision" data-pk="{{drug.pk}}" data-name="wish_drug_brand" data-type="text">{{drug.wish_drug_brand}}</span></td>
+          <td> <span class="revision" data-pk="{{drug.pk}}" data-name="wish_drug_strength" data-type="text">{{drug.wish_drug_strength}}</span></td>
+
+        <!--<td>{{drug.wish_drug_name}}</td>-->
+        <!--<td>{{drug.wish_drug_brand}}</td>-->
+        <!--<td>{{drug.wish_drug_strength}}</td>-->
+        <td>CIN #123456789</td>
+        <td>$xx.xx</td>
+        <!--<td><a href="edit.html" class="btn btn-default btn-sm">-->
+            <!--<span class="glyphicon glyphicon-edit"></span>-->
+        <!--</a></td>-->
+         <td> <button data-pk="{{drug.pk}}" class="btn btn-default btn-sm btnremove">
+            <i class="glyphicon glyphicon-remove"></i>
+        </button></td>
+      </tr>
+      </div>
+      {% endfor %}
+    </table>
+</div>
+</div>
+
+
+    <!--<div class="ui-widget">-->
+  <!--<label for="drugs">Drug Search: </label>-->
+  <!--<input id="drugs">-->
+<!--</div>-->
+
+<!--<form method='post' action="">{% csrf_token %}-->
+    <!--{{wishform.as_p}}-->
+<!--<input type='submit' id='drugs' value='Put Into Wish List'/>-->
+<!--</form>-->
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var product_input=$('input[id="id_wish_drug_name"]');
+        product_input.autocomplete({
+          source: "/client/dautocomplete/",
+          minLength: 2,
+          position: { my : "right left", at: "right bottom" },
+          appendTo: "#wwform"
+        });
+      } );
+
+      jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+          var ul = this.menu.element;
+          ul.outerWidth(this.element.outerWidth());
+        }
+    </script>
+
+
+    {% csrf_token %}
+<script type="text/javascript">
+/*
+    $('.revision').editable({
+        type:  'text',
+        placement: 'bottom',
+
+        url:   '{% url "client:wish_revise" %}',
+        title: 'Enter Your Preference',
+        ajaxOptions: {
+            type: 'PUT',
+            dataType: 'json',
+
+        },
+
+        success: function(response, newValue) {
+            if(response.success != 'true') return response.msg; //msg will be shown in editable form
+        },
+        /*params: function(params) {
+            //originally params contain pk, name and value
+            params.a = 1
+            return params;
+        },*/
+    });*/
+
+    $(document).on('click', '.glyphicon-plus', function(e){
+        $this = $(this)
+
+
+
+    });
+
+    $(document).on('click', '.btnremove', function(e){
+        $this = $(this);
+        $.ajax({
+            url: '{% url "client:wish_revise" %}',
+            type: 'delete',
+            data: {'pk': $(this).data('pk')},
+            success: function function_name(result) {
+                         $this.parent('.item').fadeOut(300, function(){ $this.remove(); });
+                     },
+        });
+
+
+    });
+
+
+</script>
+<!-- footer-->
+<div class="panel panel-default">
+  <div class="panel-body">
+
+  </div>
+  <div class="panel-footer col-sm-12 col-md-12 col-lg-12">
+    <!-- links at the bottom of the page that redirect users who are lost -->
+    <p> <a href="https://www.purdue.edu/rx/">Purdue University Retail Pharmacy</a> |
+   <a href="http://www.purdue.edu/"> Purdue University </a> |
+  <a href="https://www.pharmacy.purdue.edu/"> Purdue University College of Pharmacy </a> </p>
+  </div></div>
+</div>
+</body>
+</div>
+</html>

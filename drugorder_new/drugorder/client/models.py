@@ -28,6 +28,7 @@ class Order(models.Model):
     # order info
     # order_number = get_order_number()  # for future generating order number
     ORDER_STATUS_CHOICES = (
+        ('shopping','Put in Shopping Cart'),
         ('new', 'Products Ordered'),
         ('filled', 'Order Filled'),
         ('remove', 'Taken Out of Inventory'),
@@ -56,3 +57,17 @@ class Drug(models.Model):  # This is the Drug table for detailed drug info
     drug_name = models.CharField(max_length=200)
     strength = models.CharField(max_length=50)
     quantity = models.IntegerField(default=0)
+
+class Product_List(models.Model):
+    product_brand = models.CharField(max_length=200)
+    product_name = models.CharField(max_length=200)
+    product_strength = models.CharField(max_length=50)
+    price=models.CharField(max_length=50)
+
+
+class Wish_List(models.Model):
+    client_obj_wish = models.ForeignKey(Client, blank=True, null=True)
+    wish_drug_name = models.CharField(max_length=200)
+    wish_drug_brand = models.CharField(max_length=200)
+    wish_drug_strength=models.CharField(max_length=50)
+    wish_drug_price=models.CharField(max_length=50)

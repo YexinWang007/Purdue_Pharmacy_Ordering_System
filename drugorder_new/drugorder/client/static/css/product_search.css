@@ -115,19 +115,74 @@ nav ul li.active a:hover{
   border-bottom-color: #AF8020;
   margin-left: 15%;
   margin-bottom:3%;
+
 }
+.welcome .buttons{
+  float:right;
+  margin-top:-55px;
+}
+
+/*div.form
+{
+    display: block;
+    text-align: center;
+}*/
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#wwform {
+    display: block;
+    position:relative
+}
+.ui-autocomplete {
+    position: absolute;
+}
+/*
+#panel{
+
+     margin-right:20px;
+     text-align: center;
+   }
+   #panel2{
+     margin-right:20px;
+     margin-left: 20px;
+     text-align: center;
+   }
+   #panel3{
+     margin-left:20px;
+     text-align: center;
+   }
+   table th{
+     text-align: center;
+   }
+   .panel-heading{
+     font-size: 18px;
+     font-weight: bold;
+
+   }
+   tr.viewAll :hover{
+     color:  #AF8020;
+     text-decoration:underline;
+     cursor: pointer;
+   }
+   .buttons{
+     margin-left:35%;
+   }
+td a {
+  text-decoration: none;
+  color:black;*/
+
 
 #panel{
   margin-left:20%;
   text-align: center;
+  margin-top: 100px;
 }
-
-
-.order-status-title p{
-  font-size: 15px;
-  font-weight: bold;
-}
-
 table th{
   text-align: center;
 }
@@ -136,36 +191,22 @@ table th{
   font-weight: bold;
 
 }
-tr.viewAll:hover{
+tr.notHeader:hover{
   color:  #AF8020;
   text-decoration:underline;
   cursor: pointer;
 }
+
    /*end page content*/
+
   /*footer*/
   .panel-footer{
     background-color: #231F20!important;
     clear:both;
     position:absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
     text-align: center;
 
   }
-
-/*
-.panel table{
-  padding: 4cm,2cm
-}
-
-.panel-body p{
-  font-size: 15px;
-  font-weight: bold;
-}*/
-
-
 .panel-footer p{
   color: white;
   text-decoration:none;
@@ -175,12 +216,6 @@ tr.viewAll:hover{
   text-decoration:none;
 }
 .panel-footer p a:hover{
-  color:  #AF8020;
-  text-decoration:underline;
-  cursor: pointer;
-}
-
-tr.notHeader:hover{
   color:  #AF8020;
   text-decoration:underline;
   cursor: pointer;

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Client,Order,Drug
+from .models import Client,Order,Drug,Wish_List
 from django.forms.formsets import BaseFormSet
 
 class ClientForm(forms.ModelForm):
@@ -57,4 +57,13 @@ class BaseDrugFormSet(BaseFormSet):
                         'Please fill in a drug form with different drugs.',
                         code='duplicate_drugs'
                     )
+
+class Wish_ListForm(forms.ModelForm):
+    class Meta:
+        model=Wish_List
+        fields=[
+            "wish_drug_name",
+            #"wish_drug_brand",
+            #"wish_drug_strength"
+        ]
 

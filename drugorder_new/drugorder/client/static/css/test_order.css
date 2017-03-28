@@ -188,6 +188,10 @@ tr.viewAll:hover{
     background-color: #231F20!important;
     clear:both;
     position:absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
     text-align: center;
 
   }

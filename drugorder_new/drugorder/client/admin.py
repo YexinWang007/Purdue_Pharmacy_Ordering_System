@@ -1,7 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Client,Order,Drug
+from .models import Client,Order,Drug,Wish_List,Product_List
 admin.site.register(Client)
 admin.site.register(Order)
 admin.site.register(Drug)
+admin.site.register(Wish_List)
+admin.site.register(Product_List)
