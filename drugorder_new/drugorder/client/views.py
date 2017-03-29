@@ -175,8 +175,18 @@ def dautocomplete(request):
     return HttpResponse(data, mimetype)
 
 def shopping_cart(request):
-    user=1
-    context={'user':user}
+    count=0
+    user = Client.objects.order_by('-pk')[0]
+    saveList = []
+    orderList = Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).order_by('date_time')
+    for order in orderList:
+        count = count + 1
+        drugList = Drug.objects.filter(order_obj=order).all()
+        drug_num=len(drugList)
+        order_number=order.get_order_number()
+        saveList.append([drugList, order, drug_num, order_number])
+    orderNum = count
+    context = {'user': user, 'saveList': saveList, 'orderNum': orderNum}
     return render(request, 'shopping_cart.html', context)
 
 def wish_revise(request):

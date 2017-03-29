@@ -18,8 +18,8 @@ class Order(models.Model):
     def __unicode__(self):
         return '%09d' % self.pk
 
-        # def get_order_number(self):  # for future generating order number
-        #     return '%09d' % self.pk
+    def get_order_number(self):  # for future generating order number
+        return '%09d' % self.pk
 
         # associates to one Client table line
 
@@ -36,7 +36,7 @@ class Order(models.Model):
         ('billing', 'Order Delivered'),
         ('complete', 'Billing Complete')
     )
-    status = models.CharField(max_length=50, choices=ORDER_STATUS_CHOICES, default='new')
+    status = models.CharField(max_length=50, choices=ORDER_STATUS_CHOICES, default='shopping')
     comment = models.TextField(max_length=1000, default="If you have any comments, please add it here")
     date_time = models.DateTimeField(auto_now_add=True)
 
