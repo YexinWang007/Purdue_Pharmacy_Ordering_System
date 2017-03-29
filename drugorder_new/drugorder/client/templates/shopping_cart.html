@@ -80,6 +80,12 @@
 </div>
 
     <div align="center">
+
+    <form action="#" method="get">
+ <input type="submit" class="btn" value="Confirm to Submit Orders" name="mybtn">
+</form>
+        <p></p>
+        <p></p>
     <p>You have <span style="color:darkolivegreen;font-weight:bold">{{orderNum}}</span> orders to be submitted</p>
         </div>
     {% for drugList,order,drug_num,order_number in saveList %}
@@ -118,6 +124,8 @@
 </div>
 </div>
     {% endfor %}
+
+
 
 <!-- footer-->
 <div class="panel panel-default">

@@ -178,6 +178,8 @@ def shopping_cart(request):
     count=0
     user = Client.objects.order_by('-pk')[0]
     saveList = []
+    if request.GET.get('mybtn'):
+        switch_status(request,user)
     orderList = Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).order_by('date_time')
     for order in orderList:
         count = count + 1
@@ -213,3 +215,10 @@ def wish_revise(request):
         drug = get_object_or_404(Wish_List, pk=drug_pk)
         drug.delete()
         return HttpResponse(status=200)
+
+#switch the status of orders from shopping cart to product ordered(new)
+def switch_status(request,user):
+    orders=Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).all()
+    for order in orders:
+        order.status='new'
+        order.save()
