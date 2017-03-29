@@ -131,24 +131,34 @@ def order_list(request):
     return render(request, 'order_history.html', context)
 
 def product_search(request):
+    flag=0
     user = Client.objects.order_by('-pk')[0]
+    wishs = Wish_List.objects.filter(client_obj_wish=user).all()
+    for drug in wishs:
+        if request.GET.get(drug.wish_drug_name):
+            drug.delete()
     if request.method == 'POST':
         wishform = Wish_ListForm(request.POST)
         if wishform.is_valid():
             drug_name = request.POST.get('wish_drug_name')
             drugList = Drug.objects.filter(drug_name=drug_name).all()
             if not drugList:
+                flag=1
                 wishList = Wish_List.objects.filter(client_obj_wish=user).all()
                 messages.success(request, 'Product Not Exist')
-            elif drugList[0].drug_name in Wish_List:
+            else:
                 wishList = Wish_List.objects.filter(client_obj_wish=user).all()
-                messages.success(request, 'Product Already in The Wish List')
-            else :
+                for w in wishList:
+                    if w.wish_drug_name==drug_name:
+                        flag=1
+                        wishList = Wish_List.objects.filter(client_obj_wish=user).all()
+                        messages.success(request, 'Product Already in The Wish List')
+            if flag==0 :
                 for drug in drugList:
                     brand = drug.drug_brand
                     strength=drug.strength
                     ###price
-                    wish_obj = Wish_List(wish_drug_name=drug, wish_drug_brand=brand,wish_drug_strength=strength, client_obj_wish=user)
+                    wish_obj = Wish_List(wish_drug_name=drug.drug_name, wish_drug_brand=brand,wish_drug_strength=strength, client_obj_wish=user)
                     wish_obj.save()
                     wishList = Wish_List.objects.filter(client_obj_wish=user).all()
     else:
@@ -182,6 +192,10 @@ def shopping_cart(request):
         switch_status(request,user)
     orderList = Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).order_by('date_time')
     for order in orderList:
+        if request.GET.get(order.get_order_number()):
+            order.delete()
+    orderList = Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).order_by('date_time')
+    for order in orderList:
         count = count + 1
         drugList = Drug.objects.filter(order_obj=order).all()
         drug_num=len(drugList)
@@ -191,30 +205,6 @@ def shopping_cart(request):
     context = {'user': user, 'saveList': saveList, 'orderNum': orderNum}
     return render(request, 'shopping_cart.html', context)
 
-def wish_revise(request):
-    # if request.method == 'PUT':
-    #     put = QueryDict(request.body)
-    #     drug_pk = put['pk']
-    #     drug = get_object_or_404(Drug, pk=drug_pk)
-    #     if put['name'] == 'wish_drug_brand':
-    #         drug.brand = put['value']
-    #     elif put['name'] == 'wish_drug_name':
-    #         drug.name = put['value']
-    #     elif put['name'] == 'wish_drug_strength':
-    #         drug.strength = put['value']
-    #
-    #     drug.save()
-    #
-    #     result = {'success': 'true', 'msg': 'failed'}
-    #     oput = json.dumps(result)
-    #     return HttpResponse(oput, content_type='application/json')
-
-    if request.method == 'DELETE':
-        delete = QueryDict(request.body)
-        drug_pk = delete['pk']
-        drug = get_object_or_404(Wish_List, pk=drug_pk)
-        drug.delete()
-        return HttpResponse(status=200)
 
 #switch the status of orders from shopping cart to product ordered(new)
 def switch_status(request,user):

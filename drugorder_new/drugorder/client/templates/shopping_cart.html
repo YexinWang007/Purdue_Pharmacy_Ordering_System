@@ -91,9 +91,16 @@
     {% for drugList,order,drug_num,order_number in saveList %}
 <div id="panel" align="center">
 <div class="panel panel-default col-sm-8 col-md-8 col-lg-8">
-  <div class="panel-heading">Order Number: {{order_number}}</div>
+  <div class="panel-heading">Order Number: {{order_number}}
+      <form action="#" method="get">
+          <input type="submit" class="btn" value="Delete This Order" name="{{order_number}}">
+  <!--<button name="testing" data-pk="{{order.pk}}" class="btn btn-default btn-sm btnremove">-->
+            <!--<i class="glyphicon glyphicon-remove"></i>-->
+  <!--</button>-->
+          </form>
+  </div>
   <div class="panel-body">
-    <p>There are {{drug_num}} kind of drugs in this order</p>
+    <p>There are <span style="color:darkolivegreen;font-weight:bold">{{drug_num}}</span> kind of drugs in this order</p>
      <p></p>
         <div class="order-status-title">
             <p>The order is on <span style="color:darkolivegreen;font-weight:bold">{{order.date_time}}</span></p>

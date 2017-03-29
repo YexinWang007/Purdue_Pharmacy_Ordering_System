@@ -165,9 +165,9 @@
         <!--<td><a href="edit.html" class="btn btn-default btn-sm">-->
             <!--<span class="glyphicon glyphicon-edit"></span>-->
         <!--</a></td>-->
-         <td> <button data-pk="{{drug.pk}}" class="btn btn-default btn-sm btnremove">
-            <i class="glyphicon glyphicon-remove"></i>
-        </button></td>
+         <td> <form action="#" method="get">
+          <input type="submit" class="btn" value="Delete This Drug" name="{{drug.wish_drug_name}}">
+          </form></td>
       </tr>
       </div>
       {% endfor %}
@@ -203,55 +203,6 @@
         }
     </script>
 
-
-    {% csrf_token %}
-<script type="text/javascript">
-/*
-    $('.revision').editable({
-        type:  'text',
-        placement: 'bottom',
-
-        url:   '{% url "client:wish_revise" %}',
-        title: 'Enter Your Preference',
-        ajaxOptions: {
-            type: 'PUT',
-            dataType: 'json',
-
-        },
-
-        success: function(response, newValue) {
-            if(response.success != 'true') return response.msg; //msg will be shown in editable form
-        },
-        /*params: function(params) {
-            //originally params contain pk, name and value
-            params.a = 1
-            return params;
-        },*/
-    });*/
-
-    $(document).on('click', '.glyphicon-plus', function(e){
-        $this = $(this)
-
-
-
-    });
-
-    $(document).on('click', '.btnremove', function(e){
-        $this = $(this);
-        $.ajax({
-            url: '{% url "client:wish_revise" %}',
-            type: 'delete',
-            data: {'pk': $(this).data('pk')},
-            success: function function_name(result) {
-                         $this.parent('.item').fadeOut(300, function(){ $this.remove(); });
-                     },
-        });
-
-
-    });
-
-
-</script>
 <!-- footer-->
 <div class="panel panel-default">
   <div class="panel-body">
