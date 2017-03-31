@@ -1,5 +1,5 @@
 from django import forms
-from .models import Client,Order,Drug,Wish_List
+from .models import Client,Order,Drug,Wish_List, Shopping_Cart
 from django.forms.formsets import BaseFormSet
 
 class ClientForm(forms.ModelForm):
@@ -21,18 +21,18 @@ class OrderForm(forms.ModelForm):
 
 class DrugForm(forms.ModelForm):
     class Meta:
-        model = Drug
+        model = Shopping_Cart
         fields = [
-            "drug_name",
-            "drug_brand",
-            "quantity",
-            "strength"
+            "shopping_drug_name",
+            "shopping_drug_brand",
+            "shopping_quantity",
+            "shopping_strength"
         ]
         widgets = {
-            'drug_name': forms.TextInput(attrs={'placeholder': 'Drug Name'}),
-            'drug_brand': forms.TextInput(attrs={'placeholder': 'Drug Brand'}),
-            'quantity': forms.TextInput(attrs={'placeholder': 'Quantity'}),
-            'strength': forms.TextInput(attrs={'placeholder': 'Strength'}),
+            'shopping_drug_name': forms.TextInput(attrs={'placeholder': 'Drug Name'}),
+            'shopping_drug_brand': forms.TextInput(attrs={'placeholder': 'Drug Brand'}),
+            'shopping_quantity': forms.TextInput(attrs={'placeholder': 'Quantity'}),
+            'shopping_strength': forms.TextInput(attrs={'placeholder': 'Strength'}),
         }
 
 
@@ -46,7 +46,7 @@ class BaseDrugFormSet(BaseFormSet):
 
         for form in self.forms:
             if form.cleaned_data:
-                drug_name = form.cleaned_data['drug_name']
+                drug_name = form.cleaned_data['shopping_drug_name']
                 if drug_name:
                     if drug_name in drug_names:
                         duplicates = True

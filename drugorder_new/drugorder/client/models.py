@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Client(models.Model):
@@ -28,7 +29,6 @@ class Order(models.Model):
     # order info
     # order_number = get_order_number()  # for future generating order number
     ORDER_STATUS_CHOICES = (
-        ('shopping','Put in Shopping Cart'),
         ('new', 'Products Ordered'),
         ('filled', 'Order Filled'),
         ('remove', 'Taken Out of Inventory'),
@@ -36,7 +36,7 @@ class Order(models.Model):
         ('billing', 'Order Delivered'),
         ('complete', 'Billing Complete')
     )
-    status = models.CharField(max_length=50, choices=ORDER_STATUS_CHOICES, default='shopping')
+    status = models.CharField(max_length=50, choices=ORDER_STATUS_CHOICES, default='new')
     comment = models.TextField(max_length=1000, default="If you have any comments, please add it here")
     date_time = models.DateTimeField(auto_now_add=True)
 
@@ -71,3 +71,10 @@ class Wish_List(models.Model):
     wish_drug_brand = models.CharField(max_length=200)
     wish_drug_strength=models.CharField(max_length=50)
     wish_drug_price=models.CharField(max_length=50)
+
+class Shopping_Cart(models.Model):
+    client_obj_shopping = models.ForeignKey(Client)
+    shopping_drug_brand = models.CharField(max_length=200)
+    shopping_drug_name = models.CharField(max_length=200)
+    shopping_strength = models.CharField(max_length=50)
+    shopping_quantity = models.IntegerField(default=0)

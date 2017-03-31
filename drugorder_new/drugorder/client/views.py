@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404, HttpResponse
 from django.http import HttpResponseRedirect,HttpResponse,QueryDict
 # Create your views here.
-from .models import Client,Order,Drug,Wish_List
+from .models import Client,Order,Drug,Wish_List,Shopping_Cart
 from django.forms import formset_factory
 from .forms import ClientForm,OrderForm,DrugForm,BaseDrugFormSet,Wish_ListForm
 from django.urls import reverse
@@ -99,18 +99,16 @@ def test_order(request):
         drugformset = DrugFormSet(request.POST)
         #orderform = DrugForm(request.POST)
         if  drugformset.is_valid():#orderform.is_valid()
-            order_obj = Order(client_obj=user)
-            order_obj.save()
             for drugform in drugformset:
                 df = drugform.cleaned_data
-                drug_name = df.get('drug_name')
-                drug_brand = df.get('drug_brand')
-                strength = df.get('strength')
-                quantity = df.get('quantity')
-                drug_obj = Drug(drug_name=drug_name, drug_brand=drug_brand, strength=strength, quantity=quantity, order_obj=order_obj)
-                drug_obj.save()
+                drug_name = df.get('shopping_drug_name')
+                drug_brand = df.get('shopping_drug_brand')
+                strength = df.get('shopping_strength')
+                quantity = df.get('shopping_quantity')
+                cart_obj = Shopping_Cart(shopping_drug_name=drug_name, shopping_drug_brand=drug_brand, shopping_strength=strength, shopping_quantity=quantity, client_obj_shopping=user)
+                cart_obj.save()
             drugformset=DrugFormSet()
-            messages.success(request, 'Order Submission Successful!')
+            messages.success(request, 'Order Submitted to Shopping Cart Successful!')
 
     else:
         #orderform = OrderForm()
@@ -189,26 +187,35 @@ def shopping_cart(request):
     user = Client.objects.order_by('-pk')[0]
     saveList = []
     if request.GET.get('mybtn'):
-        switch_status(request,user)
-    orderList = Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).order_by('date_time')
-    for order in orderList:
-        if request.GET.get(order.get_order_number()):
-            order.delete()
-    orderList = Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).order_by('date_time')
-    for order in orderList:
+        #switch_status(request,user)
+        order_object=Order(client_obj=user)
+        order_object.save()
+        drugs_in_cart = Shopping_Cart.objects.filter(client_obj_shopping=user).all()
+        for drug in drugs_in_cart:
+            drug_name=drug.shopping_drug_name
+            drug_brand=drug.shopping_drug_brand
+            strength=drug.shopping_strength
+            quantity=drug.shopping_quantity
+            drug_object=Drug(order_obj=order_object,drug_name=drug_name,drug_brand=drug_brand,strength=strength,quantity=quantity)
+            drug_object.save()
+            drug.delete()
+    orderList = Shopping_Cart.objects.filter(Q(client_obj_shopping=user)).all()
+    for drug in orderList:
+        if request.GET.get(drug.shopping_drug_name):
+            drug.delete()
+    orderList = Shopping_Cart.objects.filter(Q(client_obj_shopping=user)).all()
+    for drug in orderList:
         count = count + 1
-        drugList = Drug.objects.filter(order_obj=order).all()
-        drug_num=len(drugList)
-        order_number=order.get_order_number()
-        saveList.append([drugList, order, drug_num, order_number])
-    orderNum = count
-    context = {'user': user, 'saveList': saveList, 'orderNum': orderNum}
+        drug_name=drug.shopping_drug_name
+        saveList.append([drug, drug_name])
+    number_of_drug=count
+    context = {'user': user, 'saveList': saveList, 'number_of_drug': number_of_drug}
     return render(request, 'shopping_cart.html', context)
 
 
 #switch the status of orders from shopping cart to product ordered(new)
-def switch_status(request,user):
-    orders=Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).all()
-    for order in orders:
-        order.status='new'
-        order.save()
+# def switch_status(request,user):
+#     orders=Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).all()
+#     for order in orders:
+#         order.status='new'
+#         order.save()

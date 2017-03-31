@@ -94,15 +94,15 @@
          {{ drugformset.management_form }}
          {% for drugform in drugformset %}
           <div class="drug-formset">
-              {{ drugform.drug_name }}
-              {% if drugform.drug_name.errors %}
-                  {% for error in link_form.drug_name.errors %}
+              {{ drugform.shopping_drug_name }}
+              {% if drugform.shopping_drug_name.errors %}
+                  {% for error in link_form.shopping_drug_name.errors %}
                       {{ error|escape }}
                   {% endfor %}
               {% endif %}
-              {{ drugform.drug_brand }}
-              {{ drugform.strength }}
-              {{ drugform.quantity }}
+              {{ drugform.shopping_drug_brand }}
+              {{ drugform.shopping_strength }}
+              {{ drugform.shopping_quantity }}
           </div>
         {% endfor %}
 
