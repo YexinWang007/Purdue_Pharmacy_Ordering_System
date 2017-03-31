@@ -2,6 +2,12 @@ from django import forms
 from .models import Client,Order,Drug,Wish_List, Shopping_Cart
 from django.forms.formsets import BaseFormSet
 
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="Username", widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    # The type is 'password' to hide the input
+    password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password', 'type': 'password'}))
+
 class ClientForm(forms.ModelForm):
     class Meta:
         model=Client

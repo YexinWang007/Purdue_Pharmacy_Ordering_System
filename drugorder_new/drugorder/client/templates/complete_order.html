@@ -25,8 +25,8 @@
 <div class="page">
   <div class="header">
     <ul class="hello">
-    <li> <a href="#"><h3>&nbsp;&nbsp;&nbsp;Logout<h3></a></li>
-    <li> <h3>Hello, Mr {{user.client_name}}</h3></li>
+    <li> <a href="{% url 'logout' %}"><h3>&nbsp;&nbsp;&nbsp;Logout<h3></a></li>
+    <li> <h3>Hello, Mr {{user.username}}</h3></li>
 
     </ul>
   </div>

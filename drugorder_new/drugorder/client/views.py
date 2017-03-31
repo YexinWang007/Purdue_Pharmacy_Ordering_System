@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404, HttpResponse
 from django.http import HttpResponseRedirect,HttpResponse,QueryDict
-# Create your views here.
 from .models import Client,Order,Drug,Wish_List,Shopping_Cart
 from django.forms import formset_factory
 from .forms import ClientForm,OrderForm,DrugForm,BaseDrugFormSet,Wish_ListForm
@@ -8,17 +7,54 @@ from django.urls import reverse
 from django.contrib import messages
 from django.utils import timezone
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeForm, UserCreationForm
+from django.contrib.auth import update_session_auth_hash, login, authenticate
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
+from .forms import LoginForm
+from django.contrib.auth.models import User
 import json
 
+def login_page(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        error_message = ""
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+
+            # If the user object is empty, no matching username and password were found
+            if user is not None:
+                #if user.is_active:
+                    auth_login(request, user)
+                    # Redirect the user to their profile page
+                    return redirect(reverse("client:home"))
+                #else:
+                #    error_message = "Your account is disabled"
+            else:
+                error_message = "Username or password incorrect"
+
+                # The page is being loaded for the first time, so load a blank page
+    else:
+        form = LoginForm()
+        error_message = ""
+    return render(request, 'registration/login.html', {'form': form, 'error_message': error_message, })
+
+
+@login_required
 def index(request):
-    user=Client.objects.order_by('-pk')[0]
+    user=request.user
+    # user=Client.objects.order_by('-pk')[0]
     context = {'user':user}
     return render(request, 'homepage.html', context)
 
-
+@login_required
 def recent_order(request):
     count=0
-    user = Client.objects.order_by('-pk')[0]
+    user=request.user
+    #user = Client.objects.order_by('-pk')[0]
     saveList=[]
     orderList = Order.objects.filter(Q(client_obj=user) & (Q(status='new')|Q(status='filled')|Q(status='removed')|Q(status='ready')|Q(status='billing'))).order_by('date_time')
     for order in orderList:
@@ -29,9 +65,11 @@ def recent_order(request):
     context = {'user': user, 'saveList': saveList, 'orderNum': orderNum}
     return render(request, 'recent_order.html', context)
 
+@login_required
 def completed_order(request):
     count=0
-    user = Client.objects.order_by('-pk')[0]
+    user=request.user
+    #user = Client.objects.order_by('-pk')[0]
     saveList=[]
     orderList = Order.objects.filter(Q(client_obj=user) & Q(status='complete')).order_by('date_time')
     for order in orderList:
@@ -73,7 +111,8 @@ def client_create(request):
     return render(request,"client_form.html",context)
 
 def order_create(request):
-    user = Client.objects.order_by('-pk')[0]
+    user=request.user
+    #user = Client.objects.order_by('-pk')[0]
     if request.method == 'POST':
         orderform = OrderForm(request.POST)
         if orderform.is_valid():
@@ -92,8 +131,10 @@ def order_create(request):
     context = {'user': user, 'orderform':orderform}
     return render(request, 'make_order.html', context)
 
+@login_required
 def test_order(request):
-    user = Client.objects.order_by('-pk')[0]
+    user=request.user
+    #user = Client.objects.order_by('-pk')[0]
     DrugFormSet = formset_factory(DrugForm,formset=BaseDrugFormSet,min_num=1)
     if request.method == 'POST':
         drugformset = DrugFormSet(request.POST)
@@ -128,9 +169,11 @@ def order_list(request):
     context = {'user': user,'nested_list': nested_list}
     return render(request, 'order_history.html', context)
 
+@login_required
 def product_search(request):
     flag=0
-    user = Client.objects.order_by('-pk')[0]
+    user=request.user
+    #user = Client.objects.order_by('-pk')[0]
     wishs = Wish_List.objects.filter(client_obj_wish=user).all()
     for drug in wishs:
         if request.GET.get(drug.wish_drug_name):
@@ -182,9 +225,11 @@ def dautocomplete(request):
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
 
+@login_required
 def shopping_cart(request):
     count=0
-    user = Client.objects.order_by('-pk')[0]
+    user=request.user
+    #user = Client.objects.order_by('-pk')[0]
     saveList = []
     if request.GET.get('mybtn'):
         #switch_status(request,user)

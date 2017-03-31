@@ -24,7 +24,7 @@ class Order(models.Model):
 
         # associates to one Client table line
 
-    client_obj = models.ForeignKey(Client, blank=True, null=True)
+    client_obj = models.ForeignKey(User, blank=True, null=True)
 
     # order info
     # order_number = get_order_number()  # for future generating order number
@@ -66,14 +66,14 @@ class Product_List(models.Model):
 
 
 class Wish_List(models.Model):
-    client_obj_wish = models.ForeignKey(Client, blank=True, null=True)
+    client_obj_wish = models.ForeignKey(User, blank=True, null=True)
     wish_drug_name = models.CharField(max_length=200)
     wish_drug_brand = models.CharField(max_length=200)
     wish_drug_strength=models.CharField(max_length=50)
     wish_drug_price=models.CharField(max_length=50)
 
 class Shopping_Cart(models.Model):
-    client_obj_shopping = models.ForeignKey(Client)
+    client_obj_shopping = models.ForeignKey(User)
     shopping_drug_brand = models.CharField(max_length=200)
     shopping_drug_name = models.CharField(max_length=200)
     shopping_strength = models.CharField(max_length=50)

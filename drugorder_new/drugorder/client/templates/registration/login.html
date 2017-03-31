@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+</head>
+<body>
+    <div class="wrapper wrapper-style1" id="mobile-hide">
+  <article id="contact" class="container small">
+    <header>
+        <h2 style="text-align: left">Sign In</h2>
+    </header>
+    <div>
+      <div class="row">
+        <div class="12u">
+          <form action="{% url 'login' %}" method="post">{% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="row half">
+              <div class="6u">
+                  {{ form.username }}
+                  {{ form.username.errors }}
+              </div>
+            </div>
+            <div class="row half">
+              <div class="6u">
+                  {{ form.password }}
+                  {{ form.password.errors }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="12u">
+                  <p style="text-align: left">{{ error_message }}</p>
+                  <input style="float: left" type="submit" class="button form-button-submit" value="Log In"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+</body>
+</html>
