@@ -99,7 +99,7 @@ class Drug(models.Model):  # This is the Drug table for detailed drug info
 class Product(models.Model):
     brand = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
-    product_strength = models.CharField(max_length=50)
+    strength = models.CharField(max_length=50)
     price=models.CharField(max_length=50)
     CIN = models.IntegerField()
 

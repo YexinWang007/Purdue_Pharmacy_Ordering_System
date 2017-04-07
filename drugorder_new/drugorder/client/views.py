@@ -64,9 +64,9 @@ def recent_order(request):
         count=count+1
         drugList=Drug.objects.filter(order_obj=order).all()
         saveList.append([drugList,order])
-        orderNum=count
-        context = {'user': user, 'saveList': saveList, 'orderNum': orderNum}
-        return render(request, 'recent_order.html', context)
+    orderNum=count
+    context = {'user': user, 'saveList': saveList, 'orderNum': orderNum}
+    return render(request, 'recent_order.html', context)
 
 
 @login_required
@@ -186,7 +186,7 @@ def product_search(request):
         wishform = Wish_ListForm(request.POST)
         if wishform.is_valid():
             drug_name = request.POST.get('wish_drug_name')
-            drugList = Drug.objects.filter(drug_name=drug_name).all()
+            drugList = Product.objects.filter(name=drug_name).all()
             if not drugList:
                 flag=1
                 wishList = Wish_List.objects.filter(client_obj_wish=user).all()
@@ -199,11 +199,11 @@ def product_search(request):
                         wishList = Wish_List.objects.filter(client_obj_wish=user).all()
                         messages.success(request, 'Product Already in The Wish List')
             if flag==0 :
-                for drug in drugList:
-                    brand = drug.brand
-                    strength=drug.strength
+                for product in drugList:
+                    brand = product.brand
+                    strength=product.strength
                     ###price
-                    wish_obj = Wish_List(wish_drug_name=drug.drug_name, wish_drug_brand=brand,wish_drug_strength=strength, client_obj_wish=user)
+                    wish_obj = Wish_List(wish_drug_name=product.name, wish_drug_brand=brand,wish_drug_strength=strength, client_obj_wish=user)
                     wish_obj.save()
                     wishList = Wish_List.objects.filter(client_obj_wish=user).all()
     else:

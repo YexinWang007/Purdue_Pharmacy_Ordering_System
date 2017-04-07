@@ -23,8 +23,8 @@
       <file leaf-file-name="productsearch.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drugorder/client/templates/productsearch.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="156" column="86" selection-start-line="156" selection-start-column="76" selection-end-line="156" selection-end-column="86" />
+            <state relative-caret-position="1275">
+              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
               <folding>
                 <element signature="e#1677#1683#0" expanded="true" />
                 <element signature="e#1683#1689#0" expanded="true" />
@@ -34,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drugorder/client/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1254">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="759">
+              <caret line="101" column="4" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="4" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -46,21 +46,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/drugorder/client/forms.py">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/drugorder/drugorder/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="1181">
+              <caret line="122" column="21" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drugorder/client/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="897">
-              <caret line="68" column="44" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="44" />
+            <state relative-caret-position="660">
+              <caret line="66" column="4" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
               <folding>
                 <element signature="e#0#76#0" expanded="true" />
               </folding>
@@ -114,7 +114,7 @@
         <entry file="file://$PROJECT_DIR$/drugorder/client/templates/shopping_cart.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="447">
-              <caret line="111" column="46" selection-start-line="111" selection-start-column="36" selection-end-line="111" selection-end-column="46" />
+              <caret line="54" column="47" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -158,12 +158,12 @@
         <option value="$PROJECT_DIR$/drugorder/client/static/css/style.css" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/homepage.html" />
         <option value="$PROJECT_DIR$/drugorder/drugorder/urls.py" />
-        <option value="$PROJECT_DIR$/drugorder/client/views.py" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/order_history.html" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/complete_order.html" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/recent_order.html" />
         <option value="$PROJECT_DIR$/drugorder/client/admin.py" />
         <option value="$PROJECT_DIR$/drugorder/client/models.py" />
+        <option value="$PROJECT_DIR$/drugorder/client/views.py" />
       </list>
     </option>
   </component>
@@ -817,26 +817,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drugorder/drugorder/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1973">
-          <caret line="122" column="21" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/drugorder/client/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drugorder/client/templates/shopping_cart.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="111" column="46" selection-start-line="111" selection-start-column="36" selection-end-line="111" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -854,18 +838,6 @@
         <state relative-caret-position="495">
           <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drugorder/client/templates/productsearch.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="156" column="86" selection-start-line="156" selection-start-column="76" selection-end-line="156" selection-end-column="86" />
-          <folding>
-            <element signature="e#1677#1683#0" expanded="true" />
-            <element signature="e#1683#1689#0" expanded="true" />
-            <element signature="e#1689#1695#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -895,22 +867,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drugorder/client/views.py">
+    <entry file="file://$PROJECT_DIR$/drugorder/drugorder/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="68" column="44" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#76#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1181">
+          <caret line="122" column="21" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/drugorder/client/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="759">
+          <caret line="101" column="4" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="4" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drugorder/client/templates/shopping_cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="54" column="47" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drugorder/client/templates/productsearch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding>
+            <element signature="e#1677#1683#0" expanded="true" />
+            <element signature="e#1683#1689#0" expanded="true" />
+            <element signature="e#1689#1695#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drugorder/client/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="66" column="4" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#76#0" expanded="true" />
           </folding>
         </state>
       </provider>
