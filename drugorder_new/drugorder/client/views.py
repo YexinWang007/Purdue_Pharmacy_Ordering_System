@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404, HttpResponse
 from django.http import HttpResponseRedirect,HttpResponse,QueryDict
-from .models import Client,Order,Drug,Wish_List,Shopping_Cart
+from .models import Client,Order,Drug,Wish_List,Shopping_Cart,Product
+from .models import Profile
 from django.forms import formset_factory
 from .forms import ClientForm,OrderForm,DrugForm,BaseDrugFormSet,Wish_ListForm
 from django.urls import reverse
@@ -14,6 +15,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from .forms import LoginForm
 from django.contrib.auth.models import User
+from django.db import models
 import json
 
 def login_page(request):
@@ -28,9 +30,12 @@ def login_page(request):
             # If the user object is empty, no matching username and password were found
             if user is not None:
                 #if user.is_active:
-                    auth_login(request, user)
+                    if user.profile.user_type == "Vendor":
+                        auth_login(request, user)
                     # Redirect the user to their profile page
-                    return redirect(reverse("client:home"))
+                        return redirect(reverse("client:home"))
+                    else:
+                        return HttpResponse("please go to: admin.p-ordering.tk")
                 #else:
                 #    error_message = "Your account is disabled"
             else:
@@ -46,7 +51,6 @@ def login_page(request):
 @login_required
 def index(request):
     user=request.user
-    # user=Client.objects.order_by('-pk')[0]
     context = {'user':user}
     return render(request, 'homepage.html', context)
 
@@ -54,16 +58,16 @@ def index(request):
 def recent_order(request):
     count=0
     user=request.user
-    #user = Client.objects.order_by('-pk')[0]
     saveList=[]
     orderList = Order.objects.filter(Q(client_obj=user) & (Q(status='new')|Q(status='filled')|Q(status='removed')|Q(status='ready')|Q(status='billing'))).order_by('date_time')
     for order in orderList:
         count=count+1
         drugList=Drug.objects.filter(order_obj=order).all()
         saveList.append([drugList,order])
-    orderNum=count
-    context = {'user': user, 'saveList': saveList, 'orderNum': orderNum}
-    return render(request, 'recent_order.html', context)
+        orderNum=count
+        context = {'user': user, 'saveList': saveList, 'orderNum': orderNum}
+        return render(request, 'recent_order.html', context)
+
 
 @login_required
 def completed_order(request):
@@ -196,7 +200,7 @@ def product_search(request):
                         messages.success(request, 'Product Already in The Wish List')
             if flag==0 :
                 for drug in drugList:
-                    brand = drug.drug_brand
+                    brand = drug.brand
                     strength=drug.strength
                     ###price
                     wish_obj = Wish_List(wish_drug_name=drug.drug_name, wish_drug_brand=brand,wish_drug_strength=strength, client_obj_wish=user)
@@ -211,13 +215,13 @@ def product_search(request):
 def dautocomplete(request):
     if request.is_ajax():
         q = request.GET.get('term')
-        drugs = Drug.objects.filter(drug_name__icontains=q)
+        drugs = Product.objects.filter(name__icontains=q)
         results = []
-        for drug in drugs:
+        for product in drugs:
             drug_json = {}
-            drug_json['id'] = drug.drug_brand
-            drug_json['label'] = drug.drug_name
-            drug_json['value'] = drug.drug_name
+            drug_json['id'] = product.brand
+            drug_json['label'] = product.name
+            drug_json['value'] = product.name
             results.append(drug_json)
         data = json.dumps(results)
     else:
@@ -241,7 +245,7 @@ def shopping_cart(request):
             drug_brand=drug.shopping_drug_brand
             strength=drug.shopping_strength
             quantity=drug.shopping_quantity
-            drug_object=Drug(order_obj=order_object,drug_name=drug_name,drug_brand=drug_brand,strength=strength,quantity=quantity)
+            drug_object=Drug(order_obj=order_object,name=drug_name,brand=drug_brand,strength=strength,quantity=quantity)
             drug_object.save()
             drug.delete()
     orderList = Shopping_Cart.objects.filter(Q(client_obj_shopping=user)).all()
@@ -259,8 +263,15 @@ def shopping_cart(request):
 
 
 #switch the status of orders from shopping cart to product ordered(new)
-# def switch_status(request,user):
-#     orders=Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).all()
-#     for order in orders:
-#         order.status='new'
-#         order.save()
+def switch_status(request,user):
+    orders=Order.objects.filter(Q(client_obj=user) & Q(status='shopping')).all()
+    for order in orders:
+        order.status='new'
+        order.save()
+
+def permission_check_vendor(request):
+    if request.user.profile.user_type != "Vendor":
+        return False
+    else:
+        return True
+

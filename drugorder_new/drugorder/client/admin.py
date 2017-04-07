@@ -1,9 +1,44 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+from .models import Profile
+from .models import Client,Order,Drug,Wish_List,Product
+from django.contrib.auth.forms import UserCreationForm
+from django import forms
+from django.utils.translation import ugettext_lazy as _
 
-# Register your models here.
-from .models import Client,Order,Drug,Wish_List,Product_List
 admin.site.register(Client)
 admin.site.register(Order)
 admin.site.register(Drug)
 admin.site.register(Wish_List)
-admin.site.register(Product_List)
+admin.site.register(Product)
+
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    can_delete = False
+    verbose_name_plural = 'Profile'
+    fk_name = 'user'
+
+# class UserCreationFormExtended(UserCreationForm):
+#     def __init__(self, *args, **kwargs):
+#         super(UserCreationFormExtended, self).__init__(*args, **kwargs)
+#         self.fields[Profile.user_type] = forms.CharField(label=_("user_type"))
+
+class CustomUserAdmin(UserAdmin):
+    # UserAdmin.add_form = UserCreationFormExtended
+    # UserAdmin.add_fieldsets = (
+    #     (None, {
+    #         'classes': ('wide',),
+    #         'fields': ('user_type', 'username', 'password1', 'password2',)
+    #     }),
+    # )
+    inlines = (ProfileInline, )
+    def get_inline_instances(self, request, obj=None):
+        if not obj:
+            return list()
+        return super(CustomUserAdmin, self).get_inline_instances(request, obj)
+
+
+
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)

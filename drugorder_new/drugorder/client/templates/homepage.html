@@ -22,7 +22,7 @@
 
 <body>
   <!--header-->
-<div class="page">
+
   <div class="header">
     <ul class="hello">
     <li> <a href="{% url 'logout' %}"><h3>&nbsp;&nbsp;&nbsp;Logout<h3></a></li>
@@ -77,8 +77,8 @@
 <!--Page Content-->
 <div class="welcome">
 <h1>Welcome</h1>
-
 </div>
+
 <div id="panel">
 <div class="panel panel-default col-sm-8 col-md-8 col-lg-8">
   <div class="panel-heading">The Website Menu</div>
@@ -93,7 +93,7 @@
      <p></p>
         <p>Phone number</p>
      <p></p>
-      <p>Email</p>
+      <p>Email {{user.profile.email}}</p>
      <p></p>
 
        </div>
@@ -111,20 +111,19 @@
 </div>
 </div>
 
-
-
 <!-- footer-->
-<div class="panel panel-default">
+<div class="panel">
+  <div class="panel panel-default">
   <div class="panel-body">
 
-  </div>
   <div class="panel-footer col-sm-12 col-md-12 col-lg-12">
-    <!-- links at the bottom of the page that redirect users who are lost -->
-    <p> <a href="https://www.purdue.edu/rx/">Purdue University Retail Pharmacy</a> |
+    <!-- links at the bottom of the page that redirect users who are lost -->
+    <p> <a href="https://www.purdue.edu/rx/">Purdue University Retail Pharmacy</a> |
    <a href="http://www.purdue.edu/"> Purdue University </a> |
   <a href="https://www.pharmacy.purdue.edu/"> Purdue University College of Pharmacy </a> </p>
-  </div></div>
+  </div>
+      </div>
+  </div>
 </div>
 </body>
-</div>
 </html>

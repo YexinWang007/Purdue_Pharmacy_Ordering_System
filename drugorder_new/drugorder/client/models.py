@@ -1,7 +1,44 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 # Create your models here.
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone_number =  models.CharField(max_length=256,blank=True,null=True)
+    email =  models.CharField(max_length=256,blank=True,null=True)
+    USER_TYPE_CHOICES = (
+        ('Vendor', 'Customer For Drugs Orders'),
+        ('Administrator', 'Pharmacy Administrator For Drug Management')
+    )
+    user_type = models.CharField(max_length=50, choices=USER_TYPE_CHOICES, default='Vendor')
+
+    def __str__(self):
+        return self.user.username
+
+    def __unicode__(self):
+        return self.user.username
+
+# @receiver(post_save, sender=User)
+# def create_or_update_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+#     instance.profile.save()
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
+
 class Client(models.Model):
     client_name = models.CharField(max_length=1000,help_text="i.e. david")
     phone_number= models.IntegerField(help_text="i.e. 7651111111")
@@ -11,6 +48,7 @@ class Client(models.Model):
         return self.client_name
     def __unicode__(self):
         return self.client_name
+
 
 class Order(models.Model):
     def __str__(self):
@@ -53,17 +91,17 @@ class Drug(models.Model):  # This is the Drug table for detailed drug info
     order_obj = models.ForeignKey(Order, blank=True, null=True)
 
     # drug info
-    drug_brand = models.CharField(max_length=200)
-    drug_name = models.CharField(max_length=200)
+    brand = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     strength = models.CharField(max_length=50)
     quantity = models.IntegerField(default=0)
 
-class Product_List(models.Model):
-    product_brand = models.CharField(max_length=200)
-    product_name = models.CharField(max_length=200)
+class Product(models.Model):
+    brand = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     product_strength = models.CharField(max_length=50)
     price=models.CharField(max_length=50)
-
+    CIN = models.IntegerField()
 
 class Wish_List(models.Model):
     client_obj_wish = models.ForeignKey(User, blank=True, null=True)
