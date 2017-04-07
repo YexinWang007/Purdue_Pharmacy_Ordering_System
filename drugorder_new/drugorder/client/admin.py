@@ -2,12 +2,11 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from .models import Profile
-from .models import Client,Order,Drug,Wish_List,Product
+from .models import Order,Drug,Wish_List,Product
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-admin.site.register(Client)
 admin.site.register(Order)
 admin.site.register(Drug)
 admin.site.register(Wish_List)

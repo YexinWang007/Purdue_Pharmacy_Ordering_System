@@ -1,5 +1,5 @@
 from django import forms
-from .models import Client,Order,Drug,Wish_List, Shopping_Cart
+from .models import Order,Drug,Wish_List, Shopping_Cart
 from django.forms.formsets import BaseFormSet
 
 
@@ -8,14 +8,14 @@ class LoginForm(forms.Form):
     # The type is 'password' to hide the input
     password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password', 'type': 'password'}))
 
-class ClientForm(forms.ModelForm):
-    class Meta:
-        model=Client
-        fields=[
-            "client_name",
-            "phone_number",
-            "contact_email"
-        ]
+# class ClientForm(forms.ModelForm):
+#     class Meta:
+#         model=Client
+#         fields=[
+#             "client_name",
+#             "phone_number",
+#             "contact_email"
+#         ]
 
 class OrderForm(forms.ModelForm):
     class Meta:

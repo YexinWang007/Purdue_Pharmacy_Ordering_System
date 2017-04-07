@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect,get_object_or_404, HttpResponse
 from django.http import HttpResponseRedirect,HttpResponse,QueryDict
-from .models import Client,Order,Drug,Wish_List,Shopping_Cart,Product
+from .models import Order,Drug,Wish_List,Shopping_Cart,Product
 from .models import Profile
 from django.forms import formset_factory
-from .forms import ClientForm,OrderForm,DrugForm,BaseDrugFormSet,Wish_ListForm
+from .forms import OrderForm,DrugForm,BaseDrugFormSet,Wish_ListForm
 from django.urls import reverse
 from django.contrib import messages
 from django.utils import timezone

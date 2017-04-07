@@ -10,8 +10,8 @@ class Profile(models.Model):
     phone_number =  models.CharField(max_length=256,blank=True,null=True)
     email =  models.CharField(max_length=256,blank=True,null=True)
     USER_TYPE_CHOICES = (
-        ('Vendor', 'Customer For Drugs Orders'),
-        ('Administrator', 'Pharmacy Administrator For Drug Management')
+        ('Vendor', 'Customer'),
+        ('Administrator', 'Administrator')
     )
     user_type = models.CharField(max_length=50, choices=USER_TYPE_CHOICES, default='Vendor')
 
@@ -39,15 +39,15 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 
-class Client(models.Model):
-    client_name = models.CharField(max_length=1000,help_text="i.e. david")
-    phone_number= models.IntegerField(help_text="i.e. 7651111111")
-    contact_email= models.CharField(max_length=200,help_text="i.e. david@purdue.edu")
-    #login = models.ForeignKey(Login, blank=True, null=True)
-    def __str__(self):
-        return self.client_name
-    def __unicode__(self):
-        return self.client_name
+# class Client(models.Model):
+#     client_name = models.CharField(max_length=1000,help_text="i.e. david")
+#     phone_number= models.IntegerField(help_text="i.e. 7651111111")
+#     contact_email= models.CharField(max_length=200,help_text="i.e. david@purdue.edu")
+#     #login = models.ForeignKey(Login, blank=True, null=True)
+#     def __str__(self):
+#         return self.client_name
+#     def __unicode__(self):
+#         return self.client_name
 
 
 class Order(models.Model):
@@ -97,11 +97,19 @@ class Drug(models.Model):  # This is the Drug table for detailed drug info
     quantity = models.IntegerField(default=0)
 
 class Product(models.Model):
-    brand = models.CharField(max_length=200)
+    brand = models.CharField(max_length=200, default="N/A")
     name = models.CharField(max_length=200)
     strength = models.CharField(max_length=50)
     price=models.CharField(max_length=50)
     CIN = models.IntegerField()
+    description = models.CharField(max_length=2000, blank=True, null=True, help_text="description here")
+
+    # class functions
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
 
 class Wish_List(models.Model):
     client_obj_wish = models.ForeignKey(User, blank=True, null=True)
