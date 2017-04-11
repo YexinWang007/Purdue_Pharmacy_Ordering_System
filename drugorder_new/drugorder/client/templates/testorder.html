@@ -26,14 +26,14 @@
   <div class="header">
     <ul class="hello">
     <li> <a href="{% url 'logout' %}"><h3>&nbsp;&nbsp;&nbsp;Logout<h3></a></li>
-    <li> <h3>Hello, Mr {{user.username}}</h3></li>
+    <li> <h3>Hello, {{user.username}}</h3></li>
 
     </ul>
   </div>
 
 
   <div class="biggerHeader">
-    <a href="https://engineering.purdue.edu/pharmorderingsys/home.html"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
+    <a href="{% url 'client:home' %}"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
     <h1>Pharmacy Ordering System</h1>
   </div>
   <nav class="navbar navbar-inverse">
@@ -77,15 +77,15 @@
 <!--Page Content-->
 <div class="welcome">
 <h1>Make New Order</h1>
-
 </div>
+
 <div id="panel">
 <div class="panel panel-default col-sm-8 col-md-8 col-lg-8">
   <div class="panel-heading">New Order Page</div>
   <div class="panel-body">
   <p>Customer Phone Number: {{user.phone_number}}</p>
       <p>Customer Contact Email: {{user.contact_email}}</p>
-  </div>
+
 
     <!--<table class="table">-->
     <!--{{ orderform.as_table }}-->
@@ -116,6 +116,12 @@
       {% endif %}
     </form>
 
+
+      </div>
+</div>
+</div>
+
+
     {% block extra_js %}
     <script src="{% static 'js/jquery.formset.js' %}"></script>
     <script>
@@ -125,8 +131,6 @@
         });
     </script>
     {% endblock %}
-</div>
-</div>
 <!-- footer-->
 <div class="panel panel-default">
   <div class="panel-body">
@@ -137,8 +141,8 @@
     <p> <a href="https://www.purdue.edu/rx/">Purdue University Retail Pharmacy</a> |
    <a href="http://www.purdue.edu/"> Purdue University </a> |
   <a href="https://www.pharmacy.purdue.edu/"> Purdue University College of Pharmacy </a> </p>
-  </div></div>
+  </div>
+</div>
 </div>
 </body>
-</div>
 </html>

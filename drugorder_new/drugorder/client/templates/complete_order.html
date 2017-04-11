@@ -26,14 +26,14 @@
   <div class="header">
     <ul class="hello">
     <li> <a href="{% url 'logout' %}"><h3>&nbsp;&nbsp;&nbsp;Logout<h3></a></li>
-    <li> <h3>Hello, Mr {{user.username}}</h3></li>
+    <li> <h3>Hello, {{user.username}}</h3></li>
 
     </ul>
   </div>
 
 
   <div class="biggerHeader">
-    <a href="https://engineering.purdue.edu/pharmorderingsys/home.html"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
+    <a href="{% url 'client:home' %}"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
     <h1>Pharmacy Ordering System</h1>
   </div>
   <nav class="navbar navbar-inverse">

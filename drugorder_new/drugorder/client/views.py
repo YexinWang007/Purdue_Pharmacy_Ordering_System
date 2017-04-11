@@ -139,7 +139,7 @@ def order_create(request):
 def test_order(request):
     user=request.user
     #user = Client.objects.order_by('-pk')[0]
-    DrugFormSet = formset_factory(DrugForm,formset=BaseDrugFormSet,min_num=1)
+    DrugFormSet = formset_factory(DrugForm,formset=BaseDrugFormSet,min_num=4)
     if request.method == 'POST':
         drugformset = DrugFormSet(request.POST)
         #orderform = DrugForm(request.POST)

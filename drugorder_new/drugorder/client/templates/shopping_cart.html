@@ -26,14 +26,14 @@
   <div class="header">
     <ul class="hello">
     <li> <a href="{% url 'logout' %}"><h3>&nbsp;&nbsp;&nbsp;Logout<h3></a></li>
-    <li> <h3>Hello, Mr {{user.username}}</h3></li>
+    <li> <h3>Hello, {{user.username}}</h3></li>
 
     </ul>
   </div>
 
 
   <div class="biggerHeader">
-    <a href="https://engineering.purdue.edu/pharmorderingsys/home.html"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
+    <a href="{% url 'client:home' %}"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
     <h1>Pharmacy Ordering System</h1>
   </div>
   <nav class="navbar navbar-inverse">
@@ -82,11 +82,11 @@
     <div align="center">
 
     <form action="#" method="get">
- <input type="submit" class="btn" value="Confirm to Submit Order" name="mybtn">
+ <input type="submit" class="btn" value="Submit Order" name="mybtn">
 </form>
         <p></p>
         <p></p>
-    <p>You have <span style="color:darkolivegreen;font-weight:bold">{{number_of_drug}}</span> kind of drugs to be submitted</p>
+    <p>You have <span style="color:darkolivegreen;font-weight:bold">{{number_of_drug}}</span> items in the cart</p>
         </div>
 
 <div id="panel" align="center">
@@ -142,8 +142,8 @@
     <p> <a href="https://www.purdue.edu/rx/">Purdue University Retail Pharmacy</a> |
    <a href="http://www.purdue.edu/"> Purdue University </a> |
   <a href="https://www.pharmacy.purdue.edu/"> Purdue University College of Pharmacy </a> </p>
-  </div></div>
+  </div>
+</div>
 </div>
 </body>
-</div>
 </html>

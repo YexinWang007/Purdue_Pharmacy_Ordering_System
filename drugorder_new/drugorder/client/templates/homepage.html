@@ -22,18 +22,18 @@
 
 <body>
   <!--header-->
-
+<div class="page">
   <div class="header">
     <ul class="hello">
-    <li> <a href="{% url 'logout' %}"><h3>&nbsp;&nbsp;&nbsp;Logout<h3></a></li>
-    <li> <h3>Hello, Mr {{user.username}}</h3></li>
+    <li> <a href="{% url 'logout' %}"><h3>   Logout<h3></a></li>
+    <li> <h3>Hello, {{user.username}}</h3></li>
 
     </ul>
   </div>
 
 
   <div class="biggerHeader">
-    <a href="https://engineering.purdue.edu/pharmorderingsys/home.html"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
+    <a href="{% url 'client:home' %}"><img src="{% static 'img/pharmLogo.png' %}" width="200" height="100"></a>
     <h1>Pharmacy Ordering System</h1>
   </div>
   <nav class="navbar navbar-inverse">
@@ -81,7 +81,7 @@
 
 <div id="panel">
 <div class="panel panel-default col-sm-8 col-md-8 col-lg-8">
-  <div class="panel-heading">The Website Menu</div>
+  <div class="panel-heading">How to use this website</div>
   <div class="panel-body">
     <p>Step1 acb</p>
      <p></p>
@@ -102,28 +102,28 @@
 
 
 
-<div id="panel">
-<div class="panel panel-default col-sm-8 col-md-8 col-lg-8">
-  <div class="panel-heading">Search For Location</div>
-  <div class="panel-body">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d12148.942027793899!2d-86.92555641298043!3d40.425783769823326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e1!4m5!1s0x8812e2b356d439bb%3A0x7547aeff1e9466d6!2s607+North+University+Street%2C+West+Lafayette%2C+IN+47906!3m2!1d40.430566!2d-86.917035!4m5!1s0x8812fd4ccdb7dd71%3A0x5da8dfe77d43df9!2sArmstrong+Hall+on+Stadium+Ave%3A+BUS190!3m2!1d40.4311678!2d-86.91555869999999!4m5!1s0x8812e2b5b80b1907%3A0x69ebec61cb7012df!2s1198+3rd+Street%2C+West+Lafayette%2C+IN+47906!3m2!1d40.427313999999996!2d-86.92035039999999!4m5!1s0x8812e2c7dfad4389%3A0xd2407b7d4f86ee10!2s298+Nimitz+Drive%2C+West+Lafayette%2C+IN+47906!3m2!1d40.4208792!2d-86.9232529!4m5!1s0x8812e2ae0d3f18e1%3A0x6a5f2f81add5b8e9!2sPMU%2C+101+North+Grant+Street%2C+West+Lafayette%2C+IN+47906!3m2!1d40.425213!2d-86.91112179999999!4m5!1s0x8812e2b356d439bb%3A0x7547aeff1e9466d6!2s607+North+University+Street%2C+West+Lafayette%2C+IN+47906!3m2!1d40.430566!2d-86.917035!5e0!3m2!1sen!2sus!4v1480549671168" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-  </div>
-</div>
-</div>
+<!--<div id="panel">-->
+<!--<div class="panel panel-default col-sm-8 col-md-8 col-lg-8">-->
+  <!--<div class="panel-heading">Search For Location</div>-->
+  <!--<div class="panel-body">-->
+    <!--<iframe src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d12148.942027793899!2d-86.92555641298043!3d40.425783769823326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e1!4m5!1s0x8812e2b356d439bb%3A0x7547aeff1e9466d6!2s607+North+University+Street%2C+West+Lafayette%2C+IN+47906!3m2!1d40.430566!2d-86.917035!4m5!1s0x8812fd4ccdb7dd71%3A0x5da8dfe77d43df9!2sArmstrong+Hall+on+Stadium+Ave%3A+BUS190!3m2!1d40.4311678!2d-86.91555869999999!4m5!1s0x8812e2b5b80b1907%3A0x69ebec61cb7012df!2s1198+3rd+Street%2C+West+Lafayette%2C+IN+47906!3m2!1d40.427313999999996!2d-86.92035039999999!4m5!1s0x8812e2c7dfad4389%3A0xd2407b7d4f86ee10!2s298+Nimitz+Drive%2C+West+Lafayette%2C+IN+47906!3m2!1d40.4208792!2d-86.9232529!4m5!1s0x8812e2ae0d3f18e1%3A0x6a5f2f81add5b8e9!2sPMU%2C+101+North+Grant+Street%2C+West+Lafayette%2C+IN+47906!3m2!1d40.425213!2d-86.91112179999999!4m5!1s0x8812e2b356d439bb%3A0x7547aeff1e9466d6!2s607+North+University+Street%2C+West+Lafayette%2C+IN+47906!3m2!1d40.430566!2d-86.917035!5e0!3m2!1sen!2sus!4v1480549671168" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+  <!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
 <!-- footer-->
-<div class="panel">
-  <div class="panel panel-default">
+    <div class="panel panel-default">
   <div class="panel-body">
 
+  </div>
   <div class="panel-footer col-sm-12 col-md-12 col-lg-12">
-    <!-- links at the bottom of the page that redirect users who are lost -->
-    <p> <a href="https://www.purdue.edu/rx/">Purdue University Retail Pharmacy</a> |
+    <!-- links at the bottom of the page that redirect users who are lost -->
+    <p> <a href="https://www.purdue.edu/rx/">Purdue University Retail Pharmacy</a> |
    <a href="http://www.purdue.edu/"> Purdue University </a> |
   <a href="https://www.pharmacy.purdue.edu/"> Purdue University College of Pharmacy </a> </p>
-  </div>
-      </div>
-  </div>
+  </div>
+</div>
 </div>
 </body>
 </html>
+
