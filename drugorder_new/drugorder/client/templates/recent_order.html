@@ -88,7 +88,7 @@
 
      {% for drugList,order in saveList %}
         <div class="order-status-title">
-            <p>The order on <span style="color:darkolivegreen;font-weight:bold">{{order.date_time}}</span> is on status:  <span style="color:darkolivegreen;font-weight:bold">{{order.status}}</span></p>
+            <p>The order on <span style="color:darkolivegreen;font-weight:bold">{{order.date_time}}</span> Status:  <span style="color:darkolivegreen;font-weight:bold">{{order.get_status_display}}</span></p>
         </div>
           <table class="table">
             <tr>
