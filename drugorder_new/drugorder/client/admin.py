@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from .models import Profile
-from .models import Order,Drug,Wish_List,Product,Shopping_Cart
+from .models import Order,Drug,Wish_List,Product,Shopping_Cart,Wish_To_Order
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.utils.translation import ugettext_lazy as _
@@ -12,6 +12,7 @@ admin.site.register(Order)
 admin.site.register(Drug)
 admin.site.register(Wish_List)
 admin.site.register(Product)
+admin.site.register(Wish_To_Order)
 
 class ProfileInline(admin.StackedInline):
     model = Profile

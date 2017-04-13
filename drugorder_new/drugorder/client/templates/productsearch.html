@@ -152,6 +152,7 @@
         <th>CIN Number</th>
         <th>Price Per Unit</th>
         <th>Delete Product</th>
+        <th>Add to New Order</th>
       </tr>
       {% for drug in wishList %}
       <div class="item">
@@ -170,6 +171,10 @@
         <!--</a></td>-->
          <td> <form action="#" method="get">
           <input type="submit" class="btn" value="Delete This Drug" name="{{drug.wish_drug_name}}">
+          </form></td>
+
+           <td> <form action="#" method="get">
+          <input type="submit" class="btn" value="Add This Drug" name="{{drug.pk}}">
           </form></td>
       </tr>
       </div>

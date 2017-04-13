@@ -124,3 +124,9 @@ class Shopping_Cart(models.Model):
     shopping_drug_name = models.CharField(max_length=200)
     shopping_strength = models.CharField(max_length=50)
     shopping_quantity = models.IntegerField(default=0)
+
+class Wish_To_Order(models.Model):
+    client_obj_WTO = models.ForeignKey(User, blank=True, null=True)
+    WTO_drug_name = models.CharField(max_length=200)
+    WTO_drug_brand = models.CharField(max_length=200)
+    WTO_drug_strength = models.CharField(max_length=50)

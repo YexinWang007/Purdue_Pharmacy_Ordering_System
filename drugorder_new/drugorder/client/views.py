@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404, HttpResponse
 from django.http import HttpResponseRedirect,HttpResponse,QueryDict
-from .models import Order,Drug,Wish_List,Shopping_Cart,Product
+from .models import Order,Drug,Wish_List,Shopping_Cart,Product,Wish_To_Order
 from .models import Profile
 from django.forms import formset_factory
 from .forms import OrderForm,DrugForm,BaseDrugFormSet,Wish_ListForm
@@ -139,11 +139,10 @@ def order_create(request):
 def test_order(request):
     user=request.user
     #user = Client.objects.order_by('-pk')[0]
-    DrugFormSet = formset_factory(DrugForm,formset=BaseDrugFormSet,min_num=4)
+    DrugFormSet = formset_factory(DrugForm,formset=BaseDrugFormSet,extra=2) #min_num=4
     if request.method == 'POST':
         drugformset = DrugFormSet(request.POST)
-        #orderform = DrugForm(request.POST)
-        if  drugformset.is_valid():#orderform.is_valid()
+        if  drugformset.is_valid():
             for drugform in drugformset:
                 df = drugform.cleaned_data
                 drug_name = df.get('shopping_drug_name')
@@ -153,12 +152,18 @@ def test_order(request):
                 cart_obj = Shopping_Cart(shopping_drug_name=drug_name, shopping_drug_brand=drug_brand, shopping_strength=strength, shopping_quantity=quantity, client_obj_shopping=user)
                 cart_obj.save()
             drugformset=DrugFormSet()
+            w_t_os=Wish_To_Order.objects.filter(client_obj_WTO=user).all()
+            for w_t_o in w_t_os:
+                w_t_o.delete()
             messages.success(request, 'Order Submitted to Shopping Cart Successful!')
 
     else:
-        #orderform = OrderForm()
-        drugformset= DrugFormSet()
-    context = {'user': user,  'drugformset':drugformset}#'orderform':orderform
+        wish_to_orders = Wish_To_Order.objects.filter(client_obj_WTO=user)
+        wto_dictionary=[]
+        for wto in wish_to_orders:
+            wto_dictionary.append({'shopping_drug_name': wto.WTO_drug_name, 'shopping_drug_brand': wto.WTO_drug_brand, 'shopping_strength': wto.WTO_drug_strength})
+        drugformset = DrugFormSet(initial=wto_dictionary)
+    context = {'user': user,  'drugformset':drugformset}
     return render(request, 'testorder.html', context)
 
 def order_confirm(request):
@@ -180,6 +185,9 @@ def product_search(request):
     #user = Client.objects.order_by('-pk')[0]
     wishs = Wish_List.objects.filter(client_obj_wish=user).all()
     for drug in wishs:
+        if request.GET.get(str(drug.pk)):
+            WTO_object = Wish_To_Order(client_obj_WTO=user,WTO_drug_name=drug.wish_drug_name,WTO_drug_brand=drug.wish_drug_brand,WTO_drug_strength=drug.wish_drug_strength)
+            WTO_object.save()
         if request.GET.get(drug.wish_drug_name):
             drug.delete()
     if request.method == 'POST':
@@ -250,7 +258,7 @@ def shopping_cart(request):
             drug.delete()
     orderList = Shopping_Cart.objects.filter(Q(client_obj_shopping=user)).all()
     for drug in orderList:
-        if request.GET.get(drug.shopping_drug_name):
+        if request.GET.get(str(drug.pk)):
             drug.delete()
     orderList = Shopping_Cart.objects.filter(Q(client_obj_shopping=user)).all()
     for drug in orderList:
