@@ -23,7 +23,7 @@
       <file leaf-file-name="productsearch.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drugorder/client/templates/productsearch.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
+            <state relative-caret-position="7227">
               <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
               <folding>
                 <element signature="e#1847#1853#0" expanded="true" />
@@ -47,8 +47,8 @@
       <file leaf-file-name="test_order.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drugorder/client/static/css/test_order.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6204">
-              <caret line="188" column="1" selection-start-line="188" selection-start-column="1" selection-end-line="188" selection-end-column="1" />
+            <state relative-caret-position="1379">
+              <caret line="159" column="1" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -64,22 +64,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.formset.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/drugorder/client/static/js/jquery.formset.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2840">
-              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="recent_order.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drugorder/client/templates/recent_order.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-449">
-              <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
-              <folding />
+            <state relative-caret-position="891">
+              <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="53" />
+              <folding>
+                <element signature="e#1117#1123#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,7 +89,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drugorder/client/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
+            <state relative-caret-position="3597">
               <caret line="127" column="45" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
               <folding>
                 <element signature="e#0#76#0" expanded="true" />
@@ -106,12 +98,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="homepage.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drugorder/client/templates/homepage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="711">
-              <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="114" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="891">
+              <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+              <folding>
+                <element signature="e#1109#1115#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,12 +138,12 @@
         <option value="$PROJECT_DIR$/drugorder/client/static/css/style.css" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/complete_order.html" />
         <option value="$PROJECT_DIR$/drugorder/client/views.py" />
-        <option value="$PROJECT_DIR$/drugorder/client/templates/homepage.html" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/productsearch.html" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/shopping_cart.html" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/recent_order.html" />
-        <option value="$PROJECT_DIR$/drugorder/client/static/css/test_order.css" />
         <option value="$PROJECT_DIR$/drugorder/client/templates/testorder.html" />
+        <option value="$PROJECT_DIR$/drugorder/client/static/css/test_order.css" />
+        <option value="$PROJECT_DIR$/drugorder/client/templates/homepage.html" />
       </list>
     </option>
   </component>
@@ -184,7 +178,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -276,6 +269,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -558,7 +552,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3201">
           <caret line="97" column="33" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
-          <folding />
+          <folding>
+            <element signature="e#1117#1123#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -573,7 +569,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2871">
           <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
-          <folding />
+          <folding>
+            <element signature="e#1117#1123#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -617,7 +615,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2871">
           <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
-          <folding />
+          <folding>
+            <element signature="e#1117#1123#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -661,7 +661,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2871">
           <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
-          <folding />
+          <folding>
+            <element signature="e#1117#1123#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -769,7 +771,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -777,9 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1188">
           <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -795,13 +793,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
           <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/drugorder/client/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
+        <state relative-caret-position="3597">
           <caret line="127" column="45" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
           <folding>
             <element signature="e#0#76#0" expanded="true" />
@@ -811,7 +808,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/drugorder/client/templates/productsearch.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
+        <state relative-caret-position="7227">
           <caret line="219" column="6" selection-start-line="219" selection-start-column="6" selection-end-line="219" selection-end-column="6" />
           <folding>
             <element signature="e#1847#1853#0" expanded="true" />
@@ -825,7 +822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1063">
           <caret line="128" column="1" selection-start-line="128" selection-start-column="1" selection-end-line="128" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -833,23 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1168">
           <caret line="147" column="7" selection-start-line="147" selection-start-column="7" selection-end-line="147" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drugorder/client/templates/homepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="114" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/drugorder/client/templates/recent_order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-449">
-          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -861,10 +840,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/drugorder/client/static/js/jquery.formset.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/drugorder/client/static/css/test_order.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6204">
-          <caret line="188" column="1" selection-start-line="188" selection-start-column="1" selection-end-line="188" selection-end-column="1" />
+        <state relative-caret-position="1379">
+          <caret line="159" column="1" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -877,11 +864,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/drugorder/client/static/js/jquery.formset.js">
+    <entry file="file://$PROJECT_DIR$/drugorder/client/templates/recent_order.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2840">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="891">
+          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="53" />
+          <folding>
+            <element signature="e#1117#1123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/drugorder/client/templates/homepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+          <folding>
+            <element signature="e#1109#1115#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
