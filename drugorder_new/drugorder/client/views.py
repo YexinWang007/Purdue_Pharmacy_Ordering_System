@@ -161,7 +161,7 @@ def test_order(request):
         wish_to_orders = Wish_To_Order.objects.filter(client_obj_WTO=user)
         wto_dictionary=[]
         for wto in wish_to_orders:
-            wto_dictionary.append({'shopping_drug_name': wto.WTO_drug_name, 'shopping_drug_brand': wto.WTO_drug_brand, 'shopping_strength': wto.WTO_drug_strength})
+            wto_dictionary.append({'shopping_drug_name': wto.WTO_drug_name, 'shopping_drug_brand': wto.WTO_drug_brand, 'shopping_strength': wto.WTO_drug_strength, 'shopping_quantity': 1})
         drugformset = DrugFormSet(initial=wto_dictionary)
     context = {'user': user,  'drugformset':drugformset}
     return render(request, 'testorder.html', context)
