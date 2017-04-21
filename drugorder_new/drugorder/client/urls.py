@@ -1,9 +1,10 @@
 from django.conf.urls import include, url
 from django.conf.urls import *
 from django.contrib import admin
-from .views import client_create,order_create,order_confirm,order_list,index,test_order,product_search,dautocomplete,completed_order,shopping_cart,recent_order
+from .views import client_create,order_create,order_confirm,order_list,index,test_order,product_search,dautocomplete,completed_order,shopping_cart,recent_order,change_password
 urlpatterns = [
     url(r'^$',index, name="home"),
+    url(r'^change_password/$',change_password, name="change_password"),
     url(r'^recent_order/$',recent_order, name="recent_order"),
     url(r'^completed_order/$',completed_order, name="completed_order"),
     url(r'^order_history/$',order_list, name="order_history"),
